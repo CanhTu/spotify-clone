@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+#wapper {
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+   width: 13px;
+   height: 5px;
+   background-color: transparent;
+   border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #505050;
+  opacity: 0.1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa6a6;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Set padding for all table cells */
+table td, table th {
+  padding: 10px;
+}
+
+/* Optional: Set different padding for header cells */
+table th {
+  padding: 15px;
+}
+
+@theme {
+  --color-firstBlack: #000000;
+  --color-secondBlack: #121212;
+  --color-thirdWhite: #fff;
+  --color-fourthBg: rgb(64, 168, 192);
+  --color-fifthText: #b3b3b3;
+  --color-tinted-base: hsla(0, 0%, 100%, .1);
+  --color-activeColor: #1ed760;
+  --color-hoverColor: #3be477;
+  --color-overlay: #141F19;
+}
+
+#player {
+  margin-top: 0.3rem;
+  -webkit-appearance: none;
+  overflow: hidden;
+  background: #121212;
+  cursor: pointer;
+  height: 0.4rem;
+  appearance: none;
+  border: none;
+  border-radius: 5%;
+  transition: all 600 ease-in-out;
+  outline: none;  
+}
+
+#player::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#player::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  width: 1rem;
+  box-shadow: -20rem 0 0 20rem white;
+  background-color: white;
+  border: none;
+  border-radius: 100%;
+}
+
+#player:hover::-webkit-slider-thumb {
+  box-shadow: -20rem 0 0 20rem #1ed760;
+  background-color: #1ed760;
+}
+
+button {
+  cursor: pointer;
+}
+
+#overlayHeader {
+  width: inherit!important;
+}

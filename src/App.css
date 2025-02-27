@@ -1,0 +1,70 @@
+#wapper {
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+   width: 13px;
+   height: 5px;
+   background-color: transparent;
+   border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #505050;
+  opacity: 0.1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa6a6;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+#player {
+  margin-top: 0.3rem;
+  -webkit-appearance: none;
+  overflow: hidden;
+  background: #121212;
+  cursor: pointer;
+  height: 0.4rem;
+  appearance: none;
+  border: none;
+  border-radius: 5%;
+  transition: all 600 ease-in-out;
+  outline: none;  
+}
+
+#player::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#player::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  width: 1rem;
+  box-shadow: -20rem 0 0 20rem white;
+  background-color: white;
+  border: none;
+  border-radius: 100%;
+}
+
+#player:hover::-webkit-slider-thumb {
+  box-shadow: -20rem 0 0 20rem #1ed760;
+  background-color: #1ed760;
+}
+
+button {
+  cursor: pointer;
+}
+
+#overlayHeader {
+  width: inherit!important;
+}
