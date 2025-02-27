@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../store/store";
 import { setToken } from "../../store/slices/tokenSlice";
 import { useEffect } from "react";
-import { setPlaylists, setCurrentPlaylist } from "../../store/slices/playlists";
+import { setPlaylists } from "../../store/slices/playlists";
 import { setTracks } from "../../store/slices/tracks";
 import PlaylistDetails from "../ui/PlaylistDetails";
 
