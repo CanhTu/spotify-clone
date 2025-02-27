@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Track, TracksState } from "../../types/typesAndInterfaces";
+import { Track, TracksState } from "../../types/typesAndInterfaces.ts";
 
 const initialState: TracksState = {
   tracks: [],

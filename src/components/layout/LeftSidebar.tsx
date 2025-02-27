@@ -1,8 +1,8 @@
-import SidebarHeader from "../ui/SidebarHeader";
-import PlaylistList from "../ui/PlaylistList";
+import SidebarHeader from "../ui/SidebarHeader.tsx";
+import PlaylistList from "../ui/PlaylistList.tsx";
 import { Sidebar } from "react-pro-sidebar";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "../../store/store.ts";
 
 interface LeftSidebarProps {
   isCollapsed: boolean;

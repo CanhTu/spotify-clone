@@ -1,6 +1,6 @@
 import { RiStackFill, RiStackLine } from "react-icons/ri";
 import { FiPlus } from "react-icons/fi";
-import Tag from "./Tag";
+import Tag from "./Tag.tsx";
 
 interface SidebarHeaderProps {
   isCollapsed: boolean;

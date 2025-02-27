@@ -1,6 +1,6 @@
-import SongItem from "./SongItem";
+import SongItem from "./SongItem.tsx";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "../../store/store.ts";
 
 export default function SongGroup() {
   const songs = useSelector((state: RootState) => state.songs.songs);

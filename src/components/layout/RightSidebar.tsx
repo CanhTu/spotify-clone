@@ -1,16 +1,16 @@
 import { IoMdClose } from "react-icons/io";
-import InfoListItem from "../shared/InfoListItem";
+import InfoListItem from "../shared/InfoListItem.tsx";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "../../store/store.ts";
 import Slider from "react-slick";
 import { useEffect, useRef } from "react";
-import { setCurrentSong } from "../../store/slices/songSlice";
+import { setCurrentSong } from "../../store/slices/songSlice.ts";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store/store";
+import { AppDispatch } from "../../store/store.ts";
 import { motion } from "framer-motion";
-import { setIsPlaylistOpened } from "../../store/slices/songSlice";
-import Login from "../auth/Login";
-import SongDetails from "../ui/SongDetails";
+import { setIsPlaylistOpened } from "../../store/slices/songSlice.ts";
+import Login from "../auth/Login.tsx";
+import SongDetails from "../ui/SongDetails.tsx";
 
 interface Track {
   id: number;

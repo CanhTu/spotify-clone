@@ -1,6 +1,6 @@
-import songData from "../../data/data";
+import songData from "../../data/data.ts";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Song, SongState } from "../../types/typesAndInterfaces";
+import { Song, SongState } from "../../types/typesAndInterfaces.ts";
 
 const initialState: SongState = {
   songs: songData,

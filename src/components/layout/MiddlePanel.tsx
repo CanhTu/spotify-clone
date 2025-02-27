@@ -1,11 +1,11 @@
 import Dashboard from "../ui/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../../store/store";
-import { setToken } from "../../store/slices/tokenSlice";
+import { RootState, AppDispatch } from "../../store/store.ts";
+import { setToken } from "../../store/slices/tokenSlice.ts";
 import { useEffect } from "react";
-import { setPlaylists } from "../../store/slices/playlists";
-import { setTracks } from "../../store/slices/tracks";
-import PlaylistDetails from "../ui/PlaylistDetails";
+import { setPlaylists } from "../../store/slices/playlists.ts";
+import { setTracks } from "../../store/slices/tracks.ts";
+import PlaylistDetails from "../ui/PlaylistDetails.tsx";
 
 export default function MiddlePanel() {
   const dispatch = useDispatch<AppDispatch>();

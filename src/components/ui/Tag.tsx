@@ -1,4 +1,4 @@
-import { TagProps } from "../../types/typesAndInterfaces";
+import { TagProps } from "../../types/typesAndInterfaces.ts";
 
 export default function Tag({ name }: TagProps) {
   return (

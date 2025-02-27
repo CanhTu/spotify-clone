@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from "../../store/store"
-import InfoListItem from "../shared/InfoListItem"
-import { setCurrentPlaylist } from "../../store/slices/playlists"
-import { PlaylistListProps } from "../../types/typesAndInterfaces";
+import { AppDispatch } from "../../store/store.ts"
+import InfoListItem from "../shared/InfoListItem.tsx"
+import { setCurrentPlaylist } from "../../store/slices/playlists.ts"
+import { PlaylistListProps } from "../../types/typesAndInterfaces.ts";
 
 export default function PlaylistList({ playlists, isCollapsed }: PlaylistListProps) {
   const dispatch = useDispatch<AppDispatch>();

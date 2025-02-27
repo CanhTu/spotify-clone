@@ -1,4 +1,4 @@
-import { SongItemProps } from "../../types/typesAndInterfaces";
+import { SongItemProps } from "../../types/typesAndInterfaces.ts";
 
 export default function SongItem({ img, name, artist }: SongItemProps) {
   return (

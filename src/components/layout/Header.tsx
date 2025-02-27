@@ -1,6 +1,6 @@
 import Logo from "../ui/Logo";
-import SearchBar from "../ui/SearchBar";
-import UserProfile from "../shared/UserProfile";
+import SearchBar from "../ui/SearchBar.tsx";
+import UserProfile from "../shared/UserProfile.tsx";
 
 export default function Header() {
   return (

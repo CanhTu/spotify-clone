@@ -8,7 +8,7 @@ import { CgMiniPlayer } from "react-icons/cg";
 import { SlVolume1, SlVolume2, SlVolumeOff } from "react-icons/sl";
 import { RiExpandDiagonalLine } from "react-icons/ri";
 import { useEffect, useRef, useState } from "react";
-import { RootState, AppDispatch } from "../../store/store";
+import { RootState, AppDispatch } from "../../store/store.ts";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentSong,

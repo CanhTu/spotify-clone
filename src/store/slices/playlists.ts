@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Playlist, PlaylistsState } from "../../types/typesAndInterfaces";
+import { Playlist, PlaylistsState } from "../../types/typesAndInterfaces.ts";
 
 const initialState: PlaylistsState = {
   playlists: [],

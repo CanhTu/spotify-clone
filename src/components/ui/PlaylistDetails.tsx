@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "../../store/store.ts";
 import { RiPlayFill } from "react-icons/ri";
 import { RiPauseFill } from "react-icons/ri";
 import ProfileImg from "../../assets/profile.png";

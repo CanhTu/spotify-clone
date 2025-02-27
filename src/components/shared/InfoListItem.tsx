@@ -1,4 +1,4 @@
-import { InfoListItemProps } from "../../types/typesAndInterfaces";
+import { InfoListItemProps } from "../../types/typesAndInterfaces.ts";
 
 
 export default function InfoListItem({

@@ -1,15 +1,15 @@
 import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Header from "./components/layout/Header";
+import Header from "./components/layout/Header.tsx";
 import MiddlePanel from "./components/layout/MiddlePanel.tsx";
-import RightSideBar from "./components/layout/RightSidebar";
-import MusicPlayer from "./components/layout/MusicPlayer";
-import LeftSidebar from "./components/layout/LeftSidebar";
+import RightSideBar from "./components/layout/RightSidebar.tsx";
+import MusicPlayer from "./components/layout/MusicPlayer.tsx";
+import LeftSidebar from "./components/layout/LeftSidebar.tsx";
 import {  useState } from "react";
 
 import { Provider } from "react-redux";
-import store from "./store/store";
+import store from "./store/store.ts";
 
 
 function App() {

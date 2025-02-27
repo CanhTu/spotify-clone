@@ -1,5 +1,5 @@
-import Tag from "./Tag";
-import SongGroup from "./SongGroup";
+import Tag from "./Tag.tsx";
+import SongGroup from "./SongGroup.tsx";
 
 
 export default function Dashboard() {
