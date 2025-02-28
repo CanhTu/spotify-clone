@@ -11,14 +11,14 @@ import { useEffect, useRef, useState } from "react";
 import { RootState, AppDispatch } from "../../store/store.ts";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setCurrentSong,
+  setCurrentTrack,
   setIsPlaying,
   setIsRepeating,
   setIsShuffling,
   setIsPlaylistOpened,
-  shuffleSongs,
-  resetSongs,
-} from "../../store/slices/songSlice";
+  shuffleTracks,
+  resetTracks,
+} from "../../store/slices/tracks";
 
 export default function MusicPlayer() {
   let audioRef = useRef<HTMLAudioElement | null>(null);
@@ -31,10 +31,9 @@ export default function MusicPlayer() {
   let [isMuted, setIsMuted] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
-  const { songs, currentSong, isPlaying, isRepeating, isShuffling, isPlaylistOpened } = useSelector(
-    (state: RootState) => state.songs
+  const { tracks, currentTrack, isPlaying, isRepeating, isShuffling, isPlaylistOpened } = useSelector(
+    (state: RootState) => state.tracks
   );
-
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
@@ -77,7 +76,7 @@ export default function MusicPlayer() {
         audio.play();
       }
     }
-  }, [currentSong]);
+  }, [currentTrack]);
 
   const handlePlay = () => {
     const audio = audioRef.current;
@@ -144,19 +143,19 @@ export default function MusicPlayer() {
   const handleToggleShuffle = () => {
     dispatch(setIsShuffling(!isShuffling));
     if (isShuffling) {
-      dispatch(shuffleSongs());
+      dispatch(shuffleTracks());
     } else {
-      dispatch(resetSongs());
+      dispatch(resetTracks());
     }
   };
 
   const handleNext = () => {
-    let currentIndex = songs.findIndex((song) => song === currentSong);
+    let currentIndex = tracks.findIndex((track) => track === currentTrack);
     let nextIndex = currentIndex + 1;
-    if (nextIndex >= songs.length) {
+    if (nextIndex >= tracks.length) {
       nextIndex = 0;
     }
-    dispatch(setCurrentSong(songs[nextIndex]));
+    dispatch(setCurrentTrack(tracks[nextIndex]));
     if (isPlaying) {
       audioRef.current?.addEventListener('loadeddata', () => {
         audioRef.current?.play();
@@ -165,12 +164,12 @@ export default function MusicPlayer() {
   };
 
   const handlePrev = () => {
-    let currentIndex = songs.findIndex((song: typeof currentSong) => song === currentSong);
+    let currentIndex = tracks.findIndex((track: typeof currentTrack) => track === currentTrack);
     let prevIndex = currentIndex - 1;
     if (prevIndex < 0) {
-      prevIndex = songs.length - 1;
+      prevIndex = tracks.length - 1;
     }
-    dispatch(setCurrentSong(songs[prevIndex]));
+    dispatch(setCurrentTrack(tracks[prevIndex]));
     if (isPlaying) {
       audioRef.current?.addEventListener('loadeddata', () => {
         audioRef.current?.play();
@@ -191,22 +190,22 @@ export default function MusicPlayer() {
   };
 
   return (
-    <div className="bg-firstBlack w-full h-25 fixed bottom-0 grid grid-cols-3 gap-4 px-6 ">
+    <div className="bg-secondBlack w-full grid grid-cols-3 gap-4 px-6 relative">
       <div className="flex items-center space-x-4">
         <img
-          src={currentSong.images.url}
-          alt={currentSong.name}
+          src={currentTrack.album.images[0].url}
+          alt={currentTrack.name}
           className="w-18 h-18 rounded-lg"
         />
         <div className="flex flex-col">
-          <h3 className="text-white max-w-100 overflow-x-hidden">{currentSong.name}</h3>
-          <p className="text-thirdText">{currentSong.artist}</p>
+          <h3 className="text-white max-w-100 overflow-x-hidden">{currentTrack.name}</h3>
+          <p className="text-thirdText">{currentTrack.artists[0].name}</p>
         </div>
       </div>
 
       {/* Player here */}
-      <div className="flex items-center jutify-center flex-col ">
-        <div className="flex items-center jutify-center space-x-6 my-3 text-xl">
+      <div className="flex items-center justify-center flex-col ">
+        <div className="flex items-center justify-center space-x-6 my-3 text-xl">
 
           {/* Shuffle */}
           <button
@@ -254,7 +253,7 @@ export default function MusicPlayer() {
 
         <div className="flex items-center space-x-4 w-full">
           <audio ref={audioRef} className="hidden" id="audio" controls>
-            <source src={currentSong.url} type="audio/mpeg" />
+            <source src={currentTrack.uri} type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
           <div className="w-full flex item-center justify-center text-xs">

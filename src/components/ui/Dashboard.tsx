@@ -1,11 +1,13 @@
 import Tag from "./Tag.tsx";
-import SongGroup from "./SongGroup.tsx";
+import TrackGroup from "./TrackGroup.tsx";
+
+
 
 
 export default function Dashboard() {
-
+  
   return (
-    <div className="max-h-screen pb-4 bg-secondBlack rounded-xl relative w-full">
+    <div id="dashBoard" className="h-full pb-4 bg-secondBlack rounded-xl relative w-full">
     {/* Head bar */}
     <div
       id="overlayHeader"
@@ -16,7 +18,7 @@ export default function Dashboard() {
       <Tag name="Podcasts" />
     </div>
 
-    <div className="relative overflow-y-auto h-screen">
+    <div className="relative">
       {/* Suggest for you */}
       <div className="flex justify-between items-center py-4 mt-16 w-full pl-9 ">
         <div className="grid grid-cols-2 w-full gap-4">
@@ -54,14 +56,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      {/* Song group */}
-      <SongGroup />
-      <SongGroup />
-      <SongGroup />
-      <SongGroup />
-      <SongGroup />
-      <SongGroup />
-      <SongGroup />
+      <TrackGroup/>
     </div>
   </div>
   );

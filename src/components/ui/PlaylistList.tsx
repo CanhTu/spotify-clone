@@ -8,7 +8,7 @@ export default function PlaylistList({ playlists, isCollapsed }: PlaylistListPro
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div className="flex items-center w-full justify-start flex-col p-4 overflow-y-scroll h-screen">
+    <div className="flex items-center w-full justify-start flex-col p-4 overflow-y-scroll">
       {isCollapsed ? null : (
         <div className="flex items-center justify-between w-full py-2">
           <a href="">
@@ -62,7 +62,7 @@ export default function PlaylistList({ playlists, isCollapsed }: PlaylistListPro
               title={playlist.name}
               description={playlist.owner ? playlist.owner.display_name : ""}
               isActive={false}
-              playSong={() => {
+              playTrack={() => {
                 dispatch(setCurrentPlaylist(playlist));
               }}
             />

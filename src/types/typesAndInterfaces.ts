@@ -1,15 +1,4 @@
 // Interfaces for Redux slices
-export interface Song {
-    id: number;
-    name: string;
-    artist: string;
-    album: string;
-    url: string;
-    images: {
-      url: string;
-    };
-  }
-  
   export interface Playlist {
     id: string;
     name: string;
@@ -27,7 +16,8 @@ export interface Song {
   export interface Album {
     id: string;
     name: string;
-    images: Array<{ url: string }>;
+    images: Array<{ url: string, width: number, height: number
+     }>;
     tracks: { total: number };
     uri: string;
     snapshot_id: string;
@@ -62,12 +52,17 @@ export interface Song {
     track_number: number;
     disc_number: number;
     duration_ms: number;
+    images: {
+      url: string;
+      width: number;
+      height: number;
+    }
   }
   
   // Interfaces for Redux state
-  export interface SongState {
-    songs: Song[];
-    currentSong: Song;
+  export interface TrackState {
+    tracks: Track[];
+    currentTrack: Track;
     isPlaying: boolean;
     isRepeating: boolean;
     isShuffling: boolean;
@@ -83,11 +78,16 @@ export interface Song {
     currentPlaylist: Playlist | null;
   }
   
-  export interface TracksState {
-    tracks: Track[];
-    currentTrack: Track | null;
+  export interface AlbumsState {
+    albums: Album[];
+    currentAlbum: Album | null;
   }
   
+  export interface TrackItemProps {
+    id:any;
+    album: Album;
+  }
+
   // Interfaces for components
   export interface TagProps {
     name: string;
@@ -98,7 +98,7 @@ export interface Song {
     title: string;
     description: string;
     isActive: boolean;
-    playSong?: () => void;
+    playTrack?: () => void;
   }
   
   export interface SidebarHeaderProps {
@@ -111,8 +111,3 @@ export interface Song {
     isCollapsed: boolean;
   }
   
-  export interface SongItemProps {
-    img: string;
-    name: string;
-    artist: string;
-  }

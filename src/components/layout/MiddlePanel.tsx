@@ -7,6 +7,7 @@ import { setPlaylists } from "../../store/slices/playlists.ts";
 import { setTracks } from "../../store/slices/tracks.ts";
 import PlaylistDetails from "../ui/PlaylistDetails.tsx";
 
+
 export default function MiddlePanel() {
   const dispatch = useDispatch<AppDispatch>();
   const token = useSelector((state: RootState) => state.token.token);
@@ -29,6 +30,7 @@ export default function MiddlePanel() {
       const data = await result.json();
       if (data.items) {
         const playlists = data.items.map((item: any) => {
+          
           return {
             id: item.id,
             name: item.name,
@@ -46,37 +48,9 @@ export default function MiddlePanel() {
       }
     };
 
-    const getFeaturedPlaylistData = async (token: string) => {
-      const result = await fetch("https://api.spotify.com/v1/browse/featured-playlists", {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = await result.json();
-      if (data.items) {
-        const playlists = data.items.map((item: any) => {
-          return {
-            id: item.id,
-            name: item.name,
-            images: item.images,
-            tracks: item.tracks,
-            uri: item.uri,
-            snapshot_id: item.snapshot_id,
-            href: item.href,
-            external_urls: item.external_urls,
-            type: item.type,
-            owner: item.owner,
-            isPlaying: false,
-          };
-        });
-        dispatch(setPlaylists(playlists));
-      }
-    };
-
-    
 
     if (token) {
       getPlaylistData(token);
-      getFeaturedPlaylistData(token);
     }
   }, [token, dispatch]);
 

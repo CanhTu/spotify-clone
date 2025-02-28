@@ -6,11 +6,11 @@ export default function InfoListItem({
   title,
   description,
   isActive,
-  playSong,
+  playTrack,
 }: InfoListItemProps){
   return (
     <div className="flex items-center justify-start w-full space-x-4 px-2 py-2 cursor-pointer hover:bg-tinted-base transition-all duration-300 ease-in-out rounded-sm">
-      <div className="min-w-15 h-15 w-15 rounded-lg cursor-pointer" onClick={playSong}>
+      <div className="min-w-15 h-15 w-15 rounded-lg cursor-pointer" onClick={playTrack}>
         <img src={src} alt="avatar" className="rounded-lg" />
       </div>
       <div className="overflow-x-hidden">

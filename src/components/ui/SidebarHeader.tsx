@@ -16,7 +16,7 @@ export default function SidebarHeader({
   };
 
   return (
-    <div className=" z-10 w-full">
+    <div className="z-10 w-full">
       <div className="flex items-center w-full justify-between p-4">
         <div className="flex items-center justify-start w-full space-x-2 cursor-pointer hover:text-white">
           <button onClick={handleCollapse}>

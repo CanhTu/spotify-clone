@@ -18,9 +18,9 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div id="wapper" className="max-h-screen max-w-screen w-screen overflow-hidden bg-firstBlack text-fifthText">
+      <div id="wapper" className="max-h-screen h-screen bg-firstBlack text-fifthText grid grid-rows-[10%_auto_13%]">
         <Header />
-        <div className={isCollapsed ? "grid grid-cols-[4%_75%_19%] gap-4 relative" : "grid grid-cols-[19%_60%_19%] gap-4 relative "}>
+        <div id="main" className={isCollapsed ? "grid grid-cols-[auto_auto_24%] gap-4 " : "grid grid-cols-[24%_auto_24%] gap-4 "}>
           <LeftSidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
           <MiddlePanel />
           <RightSideBar />

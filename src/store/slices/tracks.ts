@@ -1,13 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Track, TracksState } from "../../types/typesAndInterfaces.ts";
+import { Track, TrackState } from "../../types/typesAndInterfaces.ts";
+import trackData from "../../data/data.ts";
 
-const initialState: TracksState = {
-  tracks: [],
-  currentTrack: null,
+const initialState: TrackState = {
+  tracks: trackData,
+  currentTrack: trackData[0],
+  isPlaying: false,
+  isRepeating: false,
+  isShuffling: false,
+  isPlaylistOpened: false,
 };
 
-const tracksSlice = createSlice({
-  name: "tracks",
+const tracks = createSlice({
+  name: "track",
   initialState,
   reducers: {
     setTracks(state, action: PayloadAction<Track[]>) {
@@ -24,6 +29,24 @@ const tracksSlice = createSlice({
         (track) => track.id !== action.payload
       );
     },
+    setIsPlaying(state, action: PayloadAction<boolean>) {
+      state.isPlaying = action.payload;
+    },
+    setIsRepeating(state, action: PayloadAction<boolean>) {
+      state.isRepeating = action.payload;
+    },
+    setIsShuffling(state, action: PayloadAction<boolean>) {
+      state.isShuffling = action.payload;
+    },
+    setIsPlaylistOpened(state, action: PayloadAction<boolean>) {
+      state.isPlaylistOpened = action.payload;
+    },
+    shuffleTracks(state) {
+      state.tracks = [...state.tracks].sort(() => Math.random() - 0.5);
+    },
+    resetTracks(state) {
+      state.tracks = trackData;
+    },
   },
 });
 
@@ -32,6 +55,12 @@ export const {
   setCurrentTrack,
   addTrack,
   removeTrack,
-} = tracksSlice.actions;
+  setIsPlaying,
+  setIsRepeating,
+  setIsShuffling,
+  setIsPlaylistOpened,
+  shuffleTracks,
+  resetTracks,
+} = tracks.actions;
 
-export default tracksSlice.reducer;
+export default tracks.reducer;

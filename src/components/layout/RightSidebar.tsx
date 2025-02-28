@@ -4,31 +4,20 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store.ts";
 import Slider from "react-slick";
 import { useEffect, useRef } from "react";
-import { setCurrentSong } from "../../store/slices/songSlice.ts";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store.ts";
 import { motion } from "framer-motion";
-import { setIsPlaylistOpened } from "../../store/slices/songSlice.ts";
+import { setIsPlaylistOpened, setCurrentTrack } from "../../store/slices/tracks.ts";
 import Login from "../auth/Login.tsx";
-import SongDetails from "../ui/SongDetails.tsx";
-
-interface Track {
-  id: number;
-  name: string;
-  artist: string;
-  album: string;
-  url: string;
-  images: {
-    url: string;
-  };
-}
+import TrackDetails from "../ui/TrackDetails.tsx";
+import { Track } from "../../types/typesAndInterfaces.ts";
 
 export default function RightSideBar() {
   const dispatch = useDispatch<AppDispatch>();
   let sliderRef = useRef<Slider | null>(null);
   let token = useSelector((state: RootState) => state.token.token);
-  const { songs, currentSong, isPlaylistOpened } = useSelector(
-    (state: RootState) => state.songs
+  const { tracks, currentTrack, isPlaylistOpened } = useSelector(
+    (state: RootState) => state.tracks
   );
   interface SliderSettings {
     dots: boolean;
@@ -43,7 +32,7 @@ export default function RightSideBar() {
   const settings: SliderSettings = {
     dots: true,
     infinite: true,
-    slidesToShow: songs.length,
+    slidesToShow: tracks.length,
     slidesToScroll: 1,
     vertical: true,
     verticalSwiping: true,
@@ -51,19 +40,19 @@ export default function RightSideBar() {
   };
   useEffect(() => {
     if (sliderRef.current) {
-      sliderRef.current.slickGoTo(songs.indexOf(currentSong) + 1);
+      sliderRef.current.slickGoTo(tracks.indexOf(currentTrack) + 1);
     }
-  }, [currentSong]);
+  }, [currentTrack]);
   return (
-    <div className="relative">
-      <div className={isPlaylistOpened ? "hidden" : "block"}>
-        {token ? <SongDetails/> : <Login />}
+    <div id="rightSidebar" className={isPlaylistOpened ? "w-full relative overflow-y-hidden": "w-full relative overflow-y-scroll"}>
+      <div className={isPlaylistOpened ? "hidden": "block"}>
+        {token ? <TrackDetails/> : <Login />}
       </div>
       <motion.div
         initial={{ y: 0, display: "none" }}
-        animate={{ y: isPlaylistOpened ? 0 : "100%", display: "block" }}
+        animate={{ y: isPlaylistOpened ? 0 : "100%", display: isPlaylistOpened ? "block" : "none" }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="absolute left-0 h-full w-full"
+        className="absolute left-0 top-0 h-full w-full z-10 bg-secondBlack"
       >
         <div className="flex justify-between items-center cursor-pointer px-6 py-4 mt-0 bg-tinted-base w-full z-10">
           <h1 className="font-bold text-white">Queue</h1>
@@ -79,15 +68,15 @@ export default function RightSideBar() {
             <div>
               <p className="font-bold text-white">Now playing</p>
               <InfoListItem
-                src={currentSong.images.url}
-                title={currentSong.name}
-                description={currentSong.artist}
+                src={currentTrack.album.images[0].url}
+                title={currentTrack.name}
+                description={currentTrack.artists[0].name}
                 isActive={true}
               />
             </div>
           </div>
           <div className="slider-container z-100 mt-3">
-            <p className="font-bold text-white mb-2">Next Song</p>
+            <p className="font-bold text-white mb-2">Next Track</p>
             <Slider
               ref={(slider) => {
                 if (slider) {
@@ -96,20 +85,20 @@ export default function RightSideBar() {
               }}
               {...settings}
             >
-              {songs.map((song, index) => {
-                let songInfo: Track = song;
-                if (currentSong.name === song.name) {
-                  songInfo = currentSong;
+              {tracks.map((track, index) => {
+                let trackInfo: Track = track;
+                if (currentTrack.name === track.name) {
+                  trackInfo = currentTrack;
                 }
                 return (
                   <InfoListItem
                     key={index}
-                    src={songInfo.images.url}
-                    title={songInfo.name}
-                    description={songInfo.artist}
+                    src={trackInfo.album.images[0].url}
+                    title={trackInfo.name}
+                    description={trackInfo.artists[0].name}
                     isActive={false}
-                    playSong={() => {
-                      dispatch(setCurrentSong(songInfo));
+                    playTrack={() => {
+                      dispatch(setCurrentTrack(trackInfo));
                     }}
                   />
                 );
