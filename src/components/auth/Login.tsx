@@ -1,6 +1,6 @@
 export default function Login() {
     const client_id = "9067c2815d6f415eb624757a146aa1ea";
-    const redirect_uri = "http://localhost:5173/callback";
+    const redirect_uri = "http://localhost:5173/spotify-clone/callback";
     const api_url = "https://accounts.spotify.com/authorize";
     const scopes = [
         "user-read-private",

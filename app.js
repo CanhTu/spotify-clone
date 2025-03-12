@@ -1,5 +1,5 @@
 var client_id = '9067c2815d6f415eb624757a146aa1ea';
-var redirect_uri = 'http://localhost:5173/callback';
+var redirect_uri = 'http://localhost:5173/spotify-clone/callback';
 
 var app = express();
 
